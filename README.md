@@ -1,6 +1,6 @@
 # memory-store [![build status][1]][2]
 
-Session store in memory
+Session store in memory, for use with [routil-session][3]
 
 ## Example
 
@@ -30,3 +30,4 @@ Session store in memory
 
   [1]: https://secure.travis-ci.org/Raynos/memory-store.png
   [2]: http://travis-ci.org/Raynos/memory-store
+  [3]: http://github.com/Raynos/routil-session
