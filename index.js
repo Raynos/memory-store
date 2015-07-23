@@ -1,28 +1,40 @@
-module.exports = createStore()
+function MemoryStore() {
+    this.data = [];
+};
 
-function createStore() {
-    return {
-        set: storeSet
-        , get: storeGet
-        , delete: storeDelete
-        , createStore: createStore
-        , _store: {}
+MemoryStore.prototype.get = function(property) {
+    for(key in this.data) {
+        if(property == key) {
+            return this.data[key];
+        }
     }
+
+    return null;
+};
+
+MemoryStore.prototype.set = function(property, value) {
+    this.data[property] = value;
+    return this;
+};
+
+MemoryStore.prototype.getAll = function() {
+    return this.data;
 }
 
-function storeSet(key, value, cb) {
-    this._store[key] = value
-    cb(null)
-}
-
-function storeGet(key, cb) {
-    if (key in this._store) {
-        return cb(null, this._store[key])
+MemoryStore.prototype.delete = function(property) {
+    if(this.data[property] != undefined) {
+        delete this.data[property];
     }
-    cb(null, null)
+
+    return this;
+};
+
+MemoryStore.prototype.clear = function() {
+    this.data = {};
 }
 
-function storeDelete(key, cb) {
-    delete this._store[key]
-    cb(null, true)
+MemoryStore.prototype.createStore = function() {
+    return new MemoryStore();
 }
+
+module.exports = new MemoryStore();

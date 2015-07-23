@@ -11,6 +11,12 @@ Session store in memory, for use with [routil-session][3]
     assert.equal(store.get("foo"), "bar")
     store.delete("foo")
     assert.equal(store.get("foo"), null)
+  
+    var data = store.getAll();
+    
+    for(key in data) {
+      console.log(key, data[key]);
+    }
 
     var otherStore = store.createStore()
 
@@ -25,6 +31,7 @@ Session store in memory, for use with [routil-session][3]
 ## Contributors
 
  - Raynos
+ - Felipe Barros Cruz
 
 ## MIT Licenced
 
